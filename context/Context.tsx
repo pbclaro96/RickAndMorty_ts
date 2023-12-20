@@ -1,31 +1,19 @@
 import { createContext } from 'react'
-interface Character{
-  id?: number, 
-  name?: string, 
-  status?: string, 
-  species?: string, 
-  type?: string, 
-  gender?: string
-  origin?: {
-    name: string,
-    url: string
-  },
-  location?: {
-    name: string,
-    url: string
-  }
-}
-const defaultValue = {
+import { IGlobalContext, IGlobalCharacters } from '../interfaces';
+
+const defaultValue: IGlobalContext = {
   numero: 0, 
   page: 1, 
-  characters: ["", 0,], 
+  characters: [], 
   character: {}, 
   origin: {}, 
   location: {}, 
-  fetchPage: (page: number) => {}, 
-  fetchCharacter: (id: string | string[]) => {}, 
-  id: [""], 
-  resetPage: (pages: number) => {} 
+  fetchPage: async (page: number): Promise<void>  => {}, 
+  fetchCharacter: async (id: string | string[]): Promise<void> => {}, 
+  id: [], 
+  resetPage: () => {},
+  image: ""
+
 };
 
 export const Contexto = createContext(defaultValue)

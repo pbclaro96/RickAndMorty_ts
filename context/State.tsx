@@ -3,22 +3,14 @@ import { useRouter } from 'next/router'
 import { Contexto } from './Context'
 import { Reducer } from './Reducer'
 import { ReactNode } from 'react';
+import { IGlobalInitialState } from '../interfaces';
 import axios from 'axios';
-
-interface initialState{
-  numero?: number,
-  characters?: (number | string)[],
-  character?: { id: number, name: string, status: string, species: string, type: string, gender: string},
-  origin?: {name: string, url: string},
-  location?: {name: string, url: string},
-  page?: number
-}
 
 const State = ({ children }:{children: ReactNode}) => {
   const router = useRouter()
   const { id } = router.query
 
-  const initialState: initialState = {
+  const initialState: IGlobalInitialState = {
     numero: 4,
     characters: [],
     character: {id: 0, name: "", status: "", species: "", type: "", gender: ""},
@@ -29,7 +21,6 @@ const State = ({ children }:{children: ReactNode}) => {
   
 
   const [state, dispatch] = useReducer(Reducer, initialState)
-
   const resetPage = () => {
     dispatch({
       payload: 0,

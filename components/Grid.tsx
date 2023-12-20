@@ -1,23 +1,11 @@
-interface Character{
-  id?: number, 
-  name?: string, 
-  status?: string, 
-  species?: string, 
-  type?: string, 
-  gender?: string
-  origin?: {
-    name: string,
-    url: string
-  },
-  location?: {
-    name: string,
-    url: string
-  }
-}
-const Grid = ({ characters, Pagina }: {characters:Character[], Pagina?: React.ComponentType<{ character: Character }>}) => {
+import { IGlobalCharacters } from "../interfaces";
+import Styles from '../styles/Grid.module.css'
+
+const Grid = ({ characters, Pagina }: {characters:IGlobalCharacters[], Pagina?: React.ComponentType<{ character: IGlobalCharacters }>}) => {
+  console.log(characters);
   return (
     <div>
-      <div>
+      <div className={Styles.contenedorPrincipal}>
         {characters.map((character, i) => (
           <div key={i}>
             <Pagina character={character} />

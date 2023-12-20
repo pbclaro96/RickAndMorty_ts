@@ -1,21 +1,15 @@
-import Image  from 'next/image'
 import Link from 'next/link'
-interface Characters{
-  id: number, 
-  name: string, 
-  status: string, 
-  species: string, 
-  type: string, 
-  gender: string,
-  image: string
-}
+import Image from 'next/image'
+import { IGlobalCharacters } from '../interfaces'
+import Styles from '../styles/Character.module.css'
 
-const Character = ({ character }: {character: Characters}) => {
+const Character = ({ character }: {character: IGlobalCharacters}) => {
+  console.log(character);
   return(
     <div>
-      <div>
-        <Link href={`indexCharacter/${character.id}`}>
-        <Image width={400} height={300} src={character.image} alt="personaje" style={{ height: 'auto', maxWidth: '100%' }} />
+      <div key={character.id} className={Styles.containerCharacters}>
+        <Link href={`indexCharacter/${character.id}`} passHref>
+          <Image className={Styles.imagen} width={400} height={300} src={character.image} alt="personaje" style={{ height: 'auto', maxWidth: '100%' }} />
           <h2>{character.name}</h2>
           <h4>Estado: {character.status}</h4>
           <h4>Especie: {character.species}</h4>

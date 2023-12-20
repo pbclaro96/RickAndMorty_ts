@@ -1,38 +1,6 @@
-type state = {
-  numero?: number;
-  page?: number;
-  characters?: (number | string)[]; // Agrega la propiedad characters
-  character?: {
-    id: number;
-    name: string;
-    status: string;
-    species: string;
-    gender: string;
-  };
-  origin?: {
-    name: string;
-    url: string;
-  };
-  location?: {
-    name: string;
-    url: string;
-  };
-};
-type action = {
-  payload?: number | {id?: number, image?: string, name?: string, status?: string, species?: string, gender?: string, 
-    origin?: {
-      name: string,
-      url: string
-    }, 
-    location?:{
-      name: string,
-      url: string
-    }
-  }, 
-  type?:string, 
-  page?: number
-}
-export const Reducer = (state: state, action: action) => {
+import { IGlobalState, IGlobalAction } from "../interfaces";
+
+export const Reducer = (state: IGlobalState, action: IGlobalAction) => {
   const { payload, type, page } = action
   switch (type) {
     case 'suma':

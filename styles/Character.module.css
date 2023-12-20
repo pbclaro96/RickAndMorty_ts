@@ -1,0 +1,67 @@
+.contenedorPrincipal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding-left: 5vh;
+  }
+  
+  .containerCharacters {
+    position: relative;
+    left: 10px;
+    transition: transform 0.5s ease-in-out;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width:19em;
+    height: 80%;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 2%;
+    padding: 20px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+    background-image: url(../public/img/starry_sky_during_nighttime_space_hd_galaxy-1600x900.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .imagen {
+    border-radius: 50%;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  .containerCharacters{
+    margin-left: -50px;
+  }
+  
+  .containerCharacters:hover {
+    transform: translateY(-20px);
+    z-index: 99;
+  }
+  
+  .containerCharacters:hover ~ .containerCharacters {
+    left: 5vh;
+  }
+  
+  .containerCharacters h2{
+    text-shadow: 1px 1px 2px rgb(0, 255, 76), 0 0 1em fuchsia, 0 0 0.2em blue;
+    font-size:22px;
+  }
+  
+  @media (max-width: 290px){
+    .containerCharacters {
+      width: 150px;
+    }
+  }
+  
+  @media (max-width: 550px){
+    .containerCharacters {
+      width: 270px;
+    }
+  }
+  
+  
+  
+  
+  

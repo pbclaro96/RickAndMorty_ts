@@ -3,24 +3,8 @@ import { Contexto } from '../context/Context'
 import Styles from '../styles/Grid.module.css'
 import Image from 'next/image'
 const OnlyCharacter = () => {
-  interface Character{
-    id?: number, 
-    name?: string, 
-    status?: string, 
-    species?: string, 
-    type?: string, 
-    gender?: string
-    origin?: {
-      name: string,
-      url: string
-    },
-    location?: {
-      name: string,
-      url: string
-    }
-  }
+  
   const { character, location, origin } = useContext(Contexto)
-
 
   console.log(character);
   return (
