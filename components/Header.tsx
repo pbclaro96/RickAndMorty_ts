@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Nav from './Nav'
 
 const Header = (): JSX.Element => {
   return(
@@ -7,10 +7,12 @@ const Header = (): JSX.Element => {
       <div>
         <div>
           <Link href="/">
-              <h1>Este es el Header!!</h1>
+            
           </Link>
+          <Nav />
         </div>
       </div>
+      
     </header>
   )
 }

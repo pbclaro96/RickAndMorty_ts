@@ -1,10 +1,10 @@
 import { useReducer } from 'react'
 import { useRouter } from 'next/router'
-import { Contexto } from './Context'
+import { Contexto } from './Context';
 import { Reducer } from './Reducer'
 import { ReactNode } from 'react';
-import { IGlobalInitialState } from '../interfaces';
 import axios from 'axios';
+import { IGlobalInitialState } from './interfaces';
 
 const State = ({ children }:{children: ReactNode}) => {
   const router = useRouter()
@@ -18,9 +18,8 @@ const State = ({ children }:{children: ReactNode}) => {
     location: {name: "", url: ""},
     page: 0
   }
-  
-
   const [state, dispatch] = useReducer(Reducer, initialState)
+  
   const resetPage = () => {
     dispatch({
       payload: 0,
@@ -39,7 +38,7 @@ const State = ({ children }:{children: ReactNode}) => {
   }
 
   const fetchPage = async (page: number) => {
-    page === 0 ? page = 1 : page
+    page = page === 0 ? 1 : page;
     let characters = 'setCharacters'
     const resp = await axios.get(`https://rickandmortyapi.com/api/character?page=${page}`);
     const characterData = resp.data;
@@ -49,19 +48,19 @@ const State = ({ children }:{children: ReactNode}) => {
         page
     })
   }
-
+  
   return (
     <Contexto.Provider value={{
         numero: state.numero,
         page: state.page,
-        characters: state.characters,
+        characters:state.characters,
         character: state.character,
         origin: state.origin,
         location:state.location,
         fetchPage,
         fetchCharacter,
         id:[],
-        resetPage
+        resetPage,
     }}>
       {children}
     </Contexto.Provider>

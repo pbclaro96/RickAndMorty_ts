@@ -1,67 +1,50 @@
-import { IGlobalState, IGlobalAction } from "../interfaces";
+import { IGlobalAction, IGlobalInitialState } from "./interfaces";
 
-export const Reducer = (state: IGlobalState, action: IGlobalAction) => {
-  const { payload, type, page } = action
+export const Reducer = (state: IGlobalInitialState, action: IGlobalAction) => {
+  
+  const { payload, type, page } = action;
+
   switch (type) {
     case 'suma':
       return {
+        ...state,
         page: state.page + 1,
       };
     case 'resta':
       return {
+        ...state,
         page: state.page - 1,
       };
     case 'setCharacters':
-      if(typeof action.payload === 'object' && action.payload !== null) {
+      return {
+        ...state,
+        characters: payload,
+        page,
+      };
+    case 'reset':
+      if (typeof payload === 'number') {
         return {
           ...state,
-          characters: action.payload,
-          page
+          page: payload,
         };
       }
-
-    case 'reset':
-      if(typeof payload === 'number'){
-        return {
-        ...state,
-        page: payload,
-        };
-      }
-      
-
+      return state; 
     case 'setCharacter':
-        if (typeof action.payload === 'object' && action.payload !== null) {
-          const { id, image, name, status, species, gender, origin, location } = action.payload;
-      
-          return {
-            ...state,
-            character: {
-              id,
-              image,
-              name,
-              status,
-              species,
-              origin,
-              location,
-              gender,
-            },
-            
-          };
-        } else {
-          
-          return state;
-        }
+      return {
+        ...state,
+        character: payload,
+      };
       
     case 'next':
       return {
+        ...state,
         page: typeof payload === 'number' ? payload + 1 : state.page,
-      }
-
+      };
     case 'prev':
       return {
+        ...state,
         page: typeof payload === 'number' ? payload - 1 : state.page,
-      }
-
+      };
     default:
       return state;
   }

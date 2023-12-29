@@ -1,0 +1,8 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+  backdrop-filter: blur(2px);
+  height: 4em;
+  margin-bottom: 2em;
+}

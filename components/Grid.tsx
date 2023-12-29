@@ -1,8 +1,7 @@
-import { IGlobalCharacters } from "../interfaces";
+import { IGlobalCharacters } from "../context/interfaces";
 import Styles from '../styles/Grid.module.css'
-
 const Grid = ({ characters, Pagina }: {characters:IGlobalCharacters[], Pagina?: React.ComponentType<{ character: IGlobalCharacters }>}) => {
-  console.log(characters);
+  
   return (
     <div>
       <div className={Styles.contenedorPrincipal}>

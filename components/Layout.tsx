@@ -5,8 +5,8 @@ import { ReactNode } from 'react';
 
 const Layout = ({children, pagina = ''}: { children: ReactNode, pagina?: string }): JSX.Element => {
   return(
-    <div>
-      <Head>
+    <div className="dark">
+      <Head >
         <title>{`RickAndMorty - ${pagina}`}</title>
         <link rel="icon" type="image/ico" href="/iconoMorty.ico" />
         <meta name="description" content="Sitio Web de personajes de la serie Rick y Morty" />
