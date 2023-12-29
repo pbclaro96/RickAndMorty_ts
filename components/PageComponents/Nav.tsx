@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Contexto } from '../context/Context'
+import { Contexto } from '../../context/Context'
 import { useContext, useState } from 'react'
-import { HeartIcon } from './HeartIcon';
-import { Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, NavbarItem, Button, Tooltip } from "@nextui-org/react";
+import { HeartIcon } from '../Icons/HeartIcon';
+import { Badge, Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, NavbarItem, Button, Tooltip } from "@nextui-org/react";
 import { ThemeSwitcher } from './ThemeSwitcher'; 
 const Nav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);

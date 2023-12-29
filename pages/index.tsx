@@ -2,10 +2,10 @@ import React from 'react'
 import { useContext, useLayoutEffect, useRef, useEffect } from 'react'
 import { Contexto } from '../context/Context'
 import type { NextPage } from "next"
-import Layout from "../components/Layout"
-import Grid from "../components/Grid"
-import Character from "../components/Character"
-import NextPrev from '../components/NextPrev';
+import Layout from "../components/PageComponents/Layout"
+import Grid from "../components/PageComponents/Grid"
+import Character from "../components/PageComponents/Character"
+import NextPrev from '../components/PageComponents/NextPrev';
 
 if (typeof window  !== 'undefined') {
   React.useLayoutEffect = React.useEffect;

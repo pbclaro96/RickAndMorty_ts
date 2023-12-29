@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes";
 import { Switch } from "@nextui-org/react";
-import { MoonIcon } from "./MoonIcon";
-import { SunIcon } from "./SunIcon";
+import { MoonIcon } from "../Icons/MoonIcon";
+import { SunIcon } from "../Icons/SunIcon";
 export const ThemeSwitcher = () => {
 
   const { theme, setTheme } = useTheme()
@@ -11,7 +11,7 @@ export const ThemeSwitcher = () => {
       <Switch defaultSelected
       size="lg"
       color="success"
-      thumbIcon={({ isSelected, className})=>(
+      thumbIcon={({ isSelected, className })=>(
         isSelected ? (
           //setTheme('light'),
           <MoonIcon className= {className}/>

@@ -36,6 +36,7 @@ export interface IGlobalInitialState {
   origin: IIndication,
   location: IIndication,
   page: number,
+  data:  IGlobalCharacters[]
 }
 
 export interface IIndication {

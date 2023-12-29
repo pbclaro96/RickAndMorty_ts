@@ -1,4 +1,4 @@
-import { IGlobalCharacters } from "../context/interfaces";
+import { IGlobalCharacters } from "../../../context/interfaces";
 
 const columns = [
   {name: "NOMBRE", uid: "name"},

@@ -1,8 +1,7 @@
-import Link from 'next/link'
 import { useState } from 'react';
-import { IGlobalCharacters } from '../context/interfaces'
+import { IGlobalCharacters } from '../../context/interfaces'
 import { ModalContent, ModalHeader, ModalBody, ModalFooter,Card, CardHeader, CardBody, Image,Divider, Tooltip, Button, useDisclosure, Modal } from "@nextui-org/react";
-import { users } from './data';
+import { users } from './data/data';
 import { FiPlusCircle } from "react-icons/fi";
 import { FaRegHeart, FaHeart } from "react-icons/fa"
 import { useRouter } from 'next/router';
@@ -14,9 +13,10 @@ const Character = ({ character }: {character: IGlobalCharacters}) => {
   const [isPressed, setIsPressed] = useState(false);
   const [localUsers, setLocalUsers] = useState(users);
   
+  const isCharacterInFavorites = users.some((item) => item.id === character.id);
+
   const handleOpen = (size:string) => {
     setSize(size)
-    const isCharacterInFavorites = users.some((item) => item.id === character.id);
     if (isCharacterInFavorites) {
       console.log('');
     }else{
@@ -31,7 +31,6 @@ const Character = ({ character }: {character: IGlobalCharacters}) => {
 
   //función para añadir personajes en la lista de favoritos
   const defineFavorites = () => {
-    const isCharacterInFavorites = users.some((item) => item.id === character.id);
     if (isCharacterInFavorites) {
       DeleteCharacter(character.id)
     } else {
@@ -41,7 +40,6 @@ const Character = ({ character }: {character: IGlobalCharacters}) => {
   }
 
   const prueba = () => {
-    const isCharacterInFavorites = users.some((item) => item.id === character.id);
     if (isCharacterInFavorites) {
       return <FaHeart/>
     }else{
@@ -76,6 +74,16 @@ const Character = ({ character }: {character: IGlobalCharacters}) => {
   }
  }
 
+ const handleButtonClick = () => {
+  handleOpen('md');
+  handlePress();
+  if (isPressed) {
+    DeleteCharacter(character.id);
+  } else {
+    defineFavorites();
+  }
+};
+
  //función para ir a la página del personaje individual seleccionado
  const goToOnlyCharacter = () => {
   const route = `indexCharacter/${character.id}`;
@@ -85,7 +93,7 @@ const Character = ({ character }: {character: IGlobalCharacters}) => {
   return(
     <div>
       <Card className="py-4 mx-8 my-8">
-          <CardHeader className="pb-0 pt-2 px-5 flex-col items-start">
+          <CardHeader className="pb-0 pt-2 px-5 flex-col !items-start">
             <Image
               alt="Card background"
               className="object-cover rounded-xl"
@@ -93,11 +101,11 @@ const Character = ({ character }: {character: IGlobalCharacters}) => {
               width={270}
             />
           </CardHeader>
-          <CardBody className="overflow-visible py-2">
-            <div className='flex justify-between mx-2.5'>
-              <h4 className="font-bold text-large">{character.name}</h4>
+          <CardBody className="overflow-visible py-2 h-[180px]">
+            <div className='flex justify-between mx-2.5 max-w-[280px]'>
+              <h4 className="font-bold text-large break-words mr-5">{character.name}</h4>
               <Tooltip content="Añadir a Favoritos">
-                <span className='flex items-center cursor-pointer text-lg text-red-500' onClick={()=>{ handleOpen('md'),handlePress(); isPressed ? DeleteCharacter(character.id): defineFavorites()}}>
+                <span className='flex items-center cursor-pointer text-lg text-red-500' onClick={handleButtonClick}>
                   {/* {isPressed ? <FaHeart /> : <FaRegHeart />} */}
                   {prueba()}
                 </span>

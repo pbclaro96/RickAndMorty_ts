@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { Contexto } from '../context/Context'
+import { Contexto } from '../../context/Context'
 import { Button, Pagination } from "@nextui-org/react";
 
 const NextPrev = () => {

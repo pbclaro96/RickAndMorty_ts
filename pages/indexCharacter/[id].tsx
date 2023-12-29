@@ -3,9 +3,9 @@ import { useContext, useRef, useLayoutEffect, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Contexto } from '../../context/Context'
 import Link from 'next/link'
-import Layout from '../../components/Layout';
-import Grid from '../../components/Grid';
-import OnlyCharacter from '../../components/OnlyCharacter';
+import Layout from '../../components/PageComponents/Layout';
+import Grid from '../../components/PageComponents/Grid';
+import OnlyCharacter from '../../components/PageComponents/OnlyCharacter';
 import { Button } from "@nextui-org/react";
 
 const EachCharacter = () => {

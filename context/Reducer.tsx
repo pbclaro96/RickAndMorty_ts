@@ -2,6 +2,7 @@ import { IGlobalAction, IGlobalInitialState } from "./interfaces";
 
 export const Reducer = (state: IGlobalInitialState, action: IGlobalAction) => {
   
+  
   const { payload, type, page } = action;
 
   switch (type) {
@@ -44,6 +45,16 @@ export const Reducer = (state: IGlobalInitialState, action: IGlobalAction) => {
       return {
         ...state,
         page: typeof payload === 'number' ? payload - 1 : state.page,
+      };
+    case 'defineFavorites':
+      return{
+        ...state,
+        data: [...state.data, action.payload]
+      };
+    case 'deleteFavorites':
+      return{
+        ...state,
+        fav: state.data.findIndex((item) => item.id === action.payload)
       };
     default:
       return state;

@@ -1,10 +1,9 @@
-import Layout from "../components/Layout"
+import Layout from "../components/PageComponents/Layout"
 import Image from "next/image";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, ChipProps } from "@nextui-org/react";
-import { EditIcon } from "../components/EditIcon";
-import { DeleteIcon } from "../components/DeleteIcon";
-import { EyeIcon } from "../components/EyeIcon";
-import { columns, users } from "../components/data";
+import { DeleteIcon } from "../components/Icons/DeleteIcon";
+import { EyeIcon } from "../components/Icons/EyeIcon";
+import { columns, users } from "../components/PageComponents/data/data";
 import { useCallback, useContext, useState } from "react";
 import { Contexto } from '../context/Context'
 
@@ -22,7 +21,7 @@ export default function App() {
   const [localUsers, setLocalUsers] = useState(users);
 
   //llama el contexto de character para que recorrerlo y poder eliminarlo de la lista
-  const { character } = useContext(Contexto)
+  const { character, defineFavorites, deleteFavorites, data } = useContext(Contexto)
 
   //para eliminar un personaje de la lista de favoritos
   const DeleteCharacter = (id:number) => {
@@ -37,6 +36,8 @@ export default function App() {
     } 
   }
   
+  
+
   const renderCell = useCallback((user: IGlobalCharacters, columnKey: React.Key) => {
     const cellValue:any = user[columnKey as keyof IGlobalCharacters];
     switch (columnKey) {

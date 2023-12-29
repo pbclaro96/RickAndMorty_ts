@@ -29,4 +29,7 @@ export const Contexto = createContext({
   fetchCharacter: async (id: string | string[]): Promise<void> => {}, 
   id: [], 
   resetPage: () => {},
+  defineFavorites: () => {},
+  deleteFavorites: (id:number) => {},
+  data: base as IGlobalCharacters[]
 })

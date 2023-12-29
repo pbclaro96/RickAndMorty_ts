@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react'
-import { Contexto } from '../context/Context'
+import { Contexto } from '../../context/Context'
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Card, CardHeader, CardBody, CardFooter, Image, Button, Tooltip,Divider } from "@nextui-org/react";
-import { IGlobalCharacters } from '../context/interfaces';
-import { users } from "../components/data";
+import { IGlobalCharacters } from '../../context/interfaces';
+import { users } from "./data/data";
 import { BsHeart } from "react-icons/bs";
 import { FaRegHeart, FaHeart } from "react-icons/fa"
 
